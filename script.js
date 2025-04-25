@@ -1,25 +1,11 @@
-let lastScrollTop = 0;
-const header = document.querySelector("header");
-const timeText = document.querySelector(".time");
+const navbar = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (scrollTop > lastScrollTop) {
-    header.classList.add("hidden");
+  if (scrollTop > 50) {
+    navbar.style.opacity = "0.7"; // Reduce visibility
   } else {
-    header.classList.remove("hidden");
+    navbar.style.opacity = "1"; // Full visibility
   }
-
-  lastScrollTop = scrollTop;
 });
-
-const now = new Date();
-const nairobiTime = now.toLocaleString("en-US", { timeZone: "Africa/Nairobi" });
-const [date, time] = nairobiTime.split(", ");
-timeText.textContent = `${time} EAT`;
-
-const yearText = document.getElementById("year");
-const year = new Date().getFullYear();
-
-yearText.textContent = year;
